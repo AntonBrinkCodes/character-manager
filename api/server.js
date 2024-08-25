@@ -1,6 +1,3 @@
-// api/server.js
-
-require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -8,11 +5,17 @@ const session = require('express-session');
 const passport = require('passport');
 require('dotenv').config();
 
+// Import Google Auth Strategy and API Routes
+require('../auth/googleAuth');
+const authRoutes = require('../routes/authRoutes');
+const characterRoutes = require('../routes/characterRoutes');
+
 const app = express();
 
 const uri = process.env.MONGODB_URI;
 const secret = process.env.SECRET_KEY;
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
@@ -26,14 +29,24 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect(uri, { serverSelectionTimeoutMS: 30000 })
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('Error connecting to MongoDB:', err));
-
-// Example route
-app.get('/api/hello', (req, res) => {
-  res.send('Hello from serverless function!');
+// Connect to MongoDB using Mongoose
+mongoose.connect(uri, {
+  serverSelectionTimeoutMS: 30000
+})
+.then(() => {
+  console.log('Connected to MongoDB');
+})
+.catch(err => {
+  console.error('Error connecting to MongoDB:', err);
 });
 
-// Export the app as a handler for Vercel
-module.exports = (req, res) => app(req, res);
+// Routes
+app.use('/auth', authRoutes);
+app.use('/api/characters', characterRoutes);
+
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
+// Export the app
+module.exports = app;
