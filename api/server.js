@@ -48,5 +48,13 @@ app.get('/', (req, res) => {
   res.send('Hello World');
 });
 
-// Export the app
+// Start server only if running locally
+if (require.main === module) {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
+
+// Export the app for use in Vercel
 module.exports = app;
