@@ -6,9 +6,9 @@ const session = require('express-session');
 const passport = require('passport');
 
 // Import Google Auth Strategy and API Routes
-require('./auth/googleAuth');
-const authRoutes = require('./routes/authRoutes');
-const characterRoutes = require('./routes/characterRoutes');
+require('../auth/googleAuth');
+const authRoutes = require('../routes/authRoutes');
+const characterRoutes = require('../routes/characterRoutes');
 
 const app = express();
 
