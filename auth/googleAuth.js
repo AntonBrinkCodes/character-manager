@@ -4,11 +4,11 @@ const User = require('../models/User');
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
-
+const backendURL = process.env.REACT_APP_BACKEND_URL;
 passport.use(new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: '/auth/google/callback'
+    callbackURL: `${backendURL}/auth/google/callback`
   },
   async (accessToken, refreshToken, profile, done) => {
     try {

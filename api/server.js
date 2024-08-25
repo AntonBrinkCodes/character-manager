@@ -14,9 +14,13 @@ const app = express();
 
 const uri = process.env.MONGODB_URI;
 const secret = process.env.SECRET_KEY;
+const frontendURL = process.env.REACT_APP_FRONTEND_URL;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: frontendURL,
+  credentials: true
+}));
 app.use(express.json());
 
 app.use(session({
@@ -50,7 +54,7 @@ app.get('/', (req, res) => {
 
 // Start server only if running locally
 if (require.main === module) {
-  const PORT = process.env.PORT || 5000;
+  const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
@@ -58,3 +62,5 @@ if (require.main === module) {
 
 // Export the app for use in Vercel
 module.exports = app;
+
+
