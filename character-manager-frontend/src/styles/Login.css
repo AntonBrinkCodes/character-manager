@@ -1,0 +1,55 @@
+/* Login.css */
+
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('https://blog.fontawesome.com/wp-content/uploads/2022/07/DnD-hero-2.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    font-family: Arial, sans-serif;
+  }
+  
+  .login-container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    margin-top: -10%;
+  }
+  
+  .login-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .login-description {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #555;
+  }
+  
+  .login-button {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4285f4;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-button:hover {
+    background-color: #357ae8;
+  }
+  
+  .login-button:focus {
+    outline: none;
+  }
+  
