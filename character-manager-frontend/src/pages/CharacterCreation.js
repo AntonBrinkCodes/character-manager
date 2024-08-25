@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/characterCreation.css'; // Import a CSS file for styling
 
+const backendURL = process.env.REACT_APP_BACKEND_URL;
+
 const CharacterCreation = ({ userId, onCharacterCreated }) => {
   const [name, setName] = useState('');
   const [healthPoints, setHealthPoints] = useState(10);
@@ -22,7 +24,7 @@ const CharacterCreation = ({ userId, onCharacterCreated }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/characters/create', {
+      const response = await axios.post(`${backendURL}/api/characters/create`, {
         userId,
         name,
         healthPoints,

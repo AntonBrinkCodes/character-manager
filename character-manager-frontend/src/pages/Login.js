@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Login.css'; // Import a CSS file for styling
 
+const backendURL = process.env.REACT_APP_BACKEND_URL;
+
 const Login = () => {
   const navigate = useNavigate();
 
@@ -17,7 +19,8 @@ const Login = () => {
   }, [navigate]);
 
   const handleLogin = () => {
-    window.open('http://localhost:5000/auth/google', '_self');
+    console.log(backendURL)
+    window.open(`${backendURL}/auth/google`, '_self');
   };
 
   return (

@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const session = require('express-session');
 const passport = require('passport');
-require('dotenv').config();
 
 // Import Google Auth Strategy and API Routes
 require('./auth/googleAuth');
