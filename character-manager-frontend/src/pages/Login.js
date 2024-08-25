@@ -20,7 +20,7 @@ const Login = () => {
 
   const handleLogin = () => {
     console.log(backendURL)
-    window.open(`${backendURL}/auth/google`, '_self');
+    //window.open(`${backendURL}/auth/google`, '_self');
   };
 
   return (
