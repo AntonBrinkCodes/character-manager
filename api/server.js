@@ -9,6 +9,7 @@ require('dotenv').config();
 require('../auth/googleAuth');
 const authRoutes = require('../routes/authRoutes');
 const characterRoutes = require('../routes/characterRoutes');
+const schemaRoutes = require('../routes/schemaRoutes');
 
 const app = express();
 
@@ -47,6 +48,9 @@ mongoose.connect(uri, {
 // Routes
 app.use('/auth', authRoutes);
 app.use('/api/characters', characterRoutes);
+app.use('/api/schema', schemaRoutes);
+
+
 
 app.get('/', (req, res) => {
   res.send('Hello World');
